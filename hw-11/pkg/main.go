@@ -59,13 +59,12 @@ func ReadDir(dir string) (map[string]string, error) {
 func RunCmd(args []string, env map[string]string) error {
 	command := args[1]
 	currentArgs := args[2:]
-	currentCommand := fmt.Sprintf("./hw-11 %s", command)
 
 	for key, value := range env {
 		os.Setenv(key, value)
 	}
 
-	c1 := exec.Command(currentCommand, currentArgs...)
+	c1 := exec.Command(command, currentArgs...)
 
 	c1.Stdout = os.Stdout
 
